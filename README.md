@@ -99,6 +99,13 @@ Please follow the development guidelines below:
 5. Use a Consistent Folder Structure.
 6. Keep Components Small.
 7. Avoid Direct DOM Manipulation
+8. Use VSCode for fast coding.
+
+## Development Tools 
+1. [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+2. [Bundle Size](https://marketplace.visualstudio.com/items?itemName=ambar.bundle-size)
+3. [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+4. [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 
 ## Branching nomenclature for feature and bug fixes
 
