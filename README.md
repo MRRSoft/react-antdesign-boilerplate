@@ -23,56 +23,60 @@ This project is a Znode Webstore application built using Next.js for SSR, React 
     ```
 Default Application will run on ```http://localhost:3000```
 
-## Using React + Typescript in Class and Functional Component
-This project is built using React and TypeScript. TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. Using TypeScript in conjunction with React provides additional type checking and better developer experience.
+## Example React Functional Component + Typescript 
 
-To create a new React component with TypeScript, you can use interfaces to define the props and state of your components. Here is an example of how to use interfaces in both class and functional components:
+In this example, we have added state to the component using the useState hook. We have defined a boolean state variable called isEditing and two functions to update its value: setIsEditing and handleEdit. We use this state variable to conditionally render an editing form or an edit button.
 
+The editing form includes two input fields for the name and age, and a save button. The input fields use the value and onChange props to bind their values to state variables called name and age, which we haven't defined yet. We can define them using the useState hook as well:
 
-    import React from 'react';
+```jsx
 
-    // Interface for component props
-    interface Props {
-        title: string;
+    import React, { useState } from 'react';
+
+    interface PersonProps {
+      name: string;
+      age: number;
     }
 
-    // Interface for component state
-    interface State {
-        isOpen: boolean;
-    }
+    const Person: React.FC<PersonProps> = ({ name, age }) => {
+      const [isEditing, setIsEditing] = useState(false);
 
-    // Class component using interfaces
-    class MyComponent extends React.Component<Props, State> {
-        state: State = {
-            isOpen: false,
-        };
+      const handleEdit = () => {
+        setIsEditing(true);
+      };
 
-        handleClick = () => {
-            this.setState({ isOpen: !this.state.isOpen });
-        };
+      const handleSave = () => {
+        setIsEditing(false);
+      };
 
-        render() {
-            const { title } = this.props;
-            const { isOpen } = this.state;
-
-            return (
+      return (
+        <div>
+          <p>Name: {name}</p>
+          <p>Age: {age}</p>
+          {isEditing ? (
             <div>
-                <h1>{title}</h1>
-                <button onClick={this.handleClick}>{isOpen ? 'Close' : 'Open'}</button>
+              <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+              <input type="number" value={age} onChange={(e) => setAge(parseInt(e.target.value))} />
+              <button onClick={handleSave}>Save</button>
             </div>
-            );
-        }
-    }
-
-    // Functional component using interface
-    const MyFunctionalComponent: React.FC<Props> = ({ title }) => {
-    return <h1>{title}</h1>;
+          ) : (
+            <button onClick={handleEdit}>Edit</button>
+          )}
+        </div>
+      );
     };
 
-    export { MyComponent, MyFunctionalComponent };
+    export default Person;
+```    
 
+## Usage of Person Component 
 
-## Override SCSS over Tailwind
+```jsx
+<Person name="John" age={30} />
+
+```
+    
+## How to write CSS
 Tailwind is a utility-first CSS framework that helps you quickly build custom user interfaces. This project uses Tailwind for styling but you can override the styles by creating your own SCSS files and importing them in your components.
     
 To override styles in Tailwind, you can use SCSS. First, create a new .scss file in the src directory:
@@ -92,7 +96,9 @@ Please follow the development guidelines below:
 2. Follow the coding standards in the tslint.json file.
 3. Use meaningful variable and function names.
 4. Document your code using JSDoc comments.
-5. Write unit tests for your code.
+5. Use a Consistent Folder Structure.
+6. Keep Components Small.
+7. Avoid Direct DOM Manipulation
 
 ## Branching nomenclature for feature and bug fixes
 
