@@ -1,4 +1,4 @@
-# React Admin Boilerplate
+# React Ant Design Boilerplate
 This project is a Znode Webstore application built using Next.js for SSR, React and TypeScript.
 
 ## Development Start
