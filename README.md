@@ -4,12 +4,12 @@ This project is a Znode Webstore application built using Next.js for SSR, React 
 ## Development Start
 1. Clone the repository to your local machine.
     ```
-    git clone https://github.com/MRRSoft/Znode-Webstore.git
+    git clone https://github.com/MRRSoft/react-antdesign-boilerplate.git
     ```
 2. Install all dependencies by running npm install.
     Switch to the "develop" branch.
     ```
-    cd Znode-Webstore
+    cd react-antdesign-boilerplate
     git checkout develop
     ```
 3. Install all dependencies by running npm install.
