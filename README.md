@@ -88,18 +88,7 @@ To override styles in Tailwind, you can use SCSS. First, create a new .scss file
     @import '~tailwindcss/utilities';
 
     // Override styles here
-    
-## Development Guidelines
-Please follow the development guidelines below:
-
-1. Write clean and concise code.
-2. Follow the coding standards in the tslint.json file.
-3. Use meaningful variable and function names.
-4. Document your code using JSDoc comments.
-5. Use a Consistent Folder Structure.
-6. Keep Components Small.
-7. Avoid Direct DOM Manipulation
-8. Use VSCode for fast coding.
+   
 
 ## Development Tools 
 1. [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
@@ -119,22 +108,53 @@ Please use the following branching nomenclature:
 For example, to create a feature branch for a new login page, use the following command:
 
     git checkout -b feature/login-page
-
+    
 ## Commit Message Standardization
-Please follow the commit message standardization below:
-
-1. Always start commit message with ticket number along with colon(:)
-2. Use imperative mood in the subject line.
-3. Capitalize the subject line.
-4. Do not end the subject line with a period.
-5. Use the body to provide more details about the commit.
-
+Please follow the commit message standardization message also we have given commit message best practices belo, please follow same :
 Example:
 
-    AFT-1309 : Added new feature to product detail page
+    feat: AFT-1309 : Added new feature to product detail page
+   
+ - `build`: changes related to the build system or external dependencies
+- `chore`: maintenance tasks or general housekeeping
+- `ci`: changes related to the continuous integration or delivery pipeline
+- `docs`: changes related to documentation
+- `feat`: new features or functionality added
+- `fix`: bug fixes or issue resolutions
+- `perf`: changes that improve performance
+- `refactor`: changes to the code structure or organization without changing functionality
+- `revert`: changes that revert previous changes
+- `style`: changes related to styling or formatting
 
-This commit adds a new feature to the product detail page that allows users to add the product to their wishlist.
+This commit adds a new feature to the product detail and the task of that feature is AFT-1309.
 
+## Git Commit Message Best Practices
+
+1. **Write clear and concise messages:** Keep your commit messages brief, but descriptive. A good commit message should explain the changes made in the commit in a single sentence.
+
+2. **Use the imperative mood:** Use the present tense in the imperative mood when writing commit messages. This helps to convey the idea that the commit is a command that is being executed.
+
+3. **Separate the subject from the body:** Start your commit message with a subject line that summarizes the changes made in the commit. Use a blank line to separate the subject from the body of the message, which should provide more detail on what was changed and why.
+
+4. **Provide context:** When writing the body of the commit message, include any relevant context that helps to explain the changes made in the commit.
+
+5. **Reference issues and pull requests:** If the commit is related to an open issue or pull request, include a reference to it in the commit message. This helps to track the progress of the issue or pull request.
+
+6. **Use a consistent format:** Use a consistent format for your commit messages across your project. This makes it easier for other contributors to understand and follow the conventions of your project.
+
+7. **Edit your commit messages:** Take the time to review and edit your commit messages before pushing them to the repository. This helps to catch any errors or omissions in your message.
+
+## Development Guidelines
+Please follow the development guidelines below:
+
+1. Write clean and concise code.
+2. Follow the coding standards in the tslint.json file.
+3. Use meaningful variable and function names.
+4. Document your code using JSDoc comments.
+5. Use a Consistent Folder Structure.
+6. Keep Components Small.
+7. Avoid Direct DOM Manipulation
+8. Use VSCode for fast coding.
 
 ## How to create and PR approval
 1. Create a new branch using the branching nomenclature.
