@@ -1,4 +1,4 @@
-const themeSetting = {
+export const themeSetting = {
           token: {
             colorPrimary: "#00b96b",
           },
@@ -9,4 +9,3 @@ const themeSetting = {
           },
 }
         
-export default themeSetting;

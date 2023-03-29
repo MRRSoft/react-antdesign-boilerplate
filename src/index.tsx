@@ -6,7 +6,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import { store } from "store/store";
-import themeSetting from "config/defaultSettings";
+import { themeSetting } from "config/defaultSettings";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
