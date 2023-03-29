@@ -1,55 +1,107 @@
-import React from "react";
-import { Button, Checkbox, Form, Input } from "antd";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "hooks/reduxHooks";
+import { Button, Card, Col, Form, Input, Image, Typography, Row } from "antd";
+import { doLogin } from "store/slices/auth.slice";
+import { notificationController } from "components/Common/Notification/Notification";
 
-const onFinish = (values: any) => {
-  console.log("Success:", values);
+interface LoginFormData {
+  username: string;
+  password: string;
+}
+
+export const Login: React.FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const [isLoading, setLoading] = useState(false);
+
+  const handleSubmit = (values: LoginFormData) => {
+    setLoading(true);
+    dispatch(doLogin(values))
+      .unwrap()
+      .then((data) => {
+        if (data.is_account) {
+          navigate("/dashboard");
+        } else {
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        notificationController.error({ message: err.message });
+        setLoading(false);
+      });
+  };
+
+  return (
+    <>
+      <Row justify={"center"}>
+        <Col span={8}>
+          <Card bordered={true}>
+            <Row justify={"center"}>
+              <Col>
+                <Image
+                  className="login-card"
+                  src="/logo192.png"
+                  preview={false}
+                />
+              </Col>
+            </Row>
+            <Row justify={"center"}>
+              <Col>
+                <Typography.Title level={3}>Login</Typography.Title>{" "}
+              </Col>
+            </Row>
+            <Row>
+              <Col span={24}>
+                <Form
+                  layout="vertical"
+                  name="basic"
+                  initialValues={{ remember: true }}
+                  onFinish={handleSubmit}
+                  autoComplete="off"
+                >
+                  <Form.Item
+                    label="Username"
+                    name="username"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your username!",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+
+                  <Form.Item
+                    label="Password"
+                    name="password"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your password!",
+                      },
+                    ]}
+                  >
+                    <Input.Password />
+                  </Form.Item>
+
+                  <Form.Item>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      loading={isLoading}
+                    >
+                      Submit
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </Col>
+            </Row>
+          </Card>
+        </Col>
+      </Row>
+    </>
+  );
 };
-
-const onFinishFailed = (errorInfo: any) => {
-  console.log("Failed:", errorInfo);
-};
-
-const Login: React.FC = () => (
-  <Form
-    name="basic"
-    labelCol={{ span: 8 }}
-    wrapperCol={{ span: 16 }}
-    style={{ maxWidth: 600 }}
-    initialValues={{ remember: true }}
-    onFinish={onFinish}
-    onFinishFailed={onFinishFailed}
-    autoComplete="off"
-  >
-    <Form.Item
-      label="Username"
-      name="username"
-      rules={[{ required: true, message: "Please input your username!" }]}
-    >
-      <Input />
-    </Form.Item>
-
-    <Form.Item
-      label="Password"
-      name="password"
-      rules={[{ required: true, message: "Please input your password!" }]}
-    >
-      <Input.Password />
-    </Form.Item>
-
-    <Form.Item
-      name="remember"
-      valuePropName="checked"
-      wrapperCol={{ offset: 8, span: 16 }}
-    >
-      <Checkbox>Remember me</Checkbox>
-    </Form.Item>
-
-    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-      <Button type="primary" htmlType="submit">
-        Submit
-      </Button>
-    </Form.Item>
-  </Form>
-);
-
-export default Login;
