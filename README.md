@@ -76,18 +76,29 @@ The editing form includes two input fields for the name and age, and a save butt
 
 ```
     
-## How to write CSS
-Tailwind is a utility-first CSS framework that helps you quickly build custom user interfaces. This project uses Tailwind for styling but you can override the styles by creating your own SCSS files and importing them in your components.
-    
-To override styles in Tailwind, you can use SCSS. First, create a new .scss file in the src directory:
+## How to change layout or button styles
 
-    // styles.scss
+Go to below path and chnage the color of buttons, borders, layout and what not. No need to write any css to change default theme behaviour. 
 
-    @import '~tailwindcss/base';
-    @import '~tailwindcss/components';
-    @import '~tailwindcss/utilities';
+``` src/config/defaultSettings ``` 
 
-    // Override styles here
+Change below keys to manage your theme. [Click Here](https://ant.design/docs/react/customize-theme) for more details.
+
+```jsx
+export const themeSetting = {
+          token: {
+            colorPrimary: "#00b96b",
+          },
+          components: {
+            Radio: {
+              colorPrimary: "#00b96b",
+            },
+          },
+}
+        
+
+
+```
    
 
 ## Development Tools 
