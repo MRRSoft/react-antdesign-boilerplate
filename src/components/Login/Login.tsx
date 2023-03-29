@@ -21,11 +21,7 @@ export const Login: React.FC = () => {
     dispatch(doLogin(values))
       .unwrap()
       .then((data) => {
-        if (data.is_account) {
-          navigate("/dashboard");
-        } else {
-          navigate("/");
-        }
+        navigate("/");
       })
       .catch((err) => {
         notificationController.error({ message: err.message });

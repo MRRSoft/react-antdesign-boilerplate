@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   ResetPasswordRequest,
-  login,
   LoginRequest,
   signUp,
   SignUpRequest,
@@ -14,34 +13,36 @@ import {
   setClientToken,
 } from "api/auth.api";
 
+
 import {
   deleteToken,
   deleteUser,
-  isAccount,
   persistToken,
   readToken,
 } from "services/localStorage.service";
+import { setUser } from "./user.slice";
 
 export interface AuthSlice {
   token: string | null;
 }
-
+ const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.cThIIoDvwdueQB468K5xDc5633seEFoqwxjF_xSJyQQ"
+       
 const initialState: AuthSlice = {
   token: readToken(),
 };
 
 export const doLogin = createAsyncThunk(
   "auth/doLogin",
-  async (loginPayload: LoginRequest, { dispatch }) =>
-    login(loginPayload).then((res) => {
-    //  dispatch(setUser(res.user));
-      persistToken(res.token,res.refresh_token);
-       let isAccountLevel= isAccount()
-      return {
-        is_account: isAccountLevel,
-        token:res.token
-      };
+    async (loginPayload: LoginRequest, { dispatch }) => new Promise((res: any) => { 
+        /**Adding Hardcoded for login architecture. This needs to be remove once the login API is ready*/
+        dispatch(setUser({ id: 1,  firstName: "John",  lastName: "Doe", imgUrl: "test.png", userName: "@johnuma",  }));
+        persistToken(token, token);
+        res( token)
     })
+    // login(loginPayload).then((res) => {
+    // //  dispatch(setUser(res.user));
+    // //persistToken(token, token);
+    // })
 );
 
 
@@ -95,7 +96,7 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(doLogin.fulfilled, (state, action) => {
-      state.token = action.payload.token;
+      state.token = token;
     });
     builder.addCase(doLogout.fulfilled, (state) => {
       state.token = "";

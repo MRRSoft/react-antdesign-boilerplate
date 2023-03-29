@@ -1,7 +1,10 @@
 import { IUser } from "interfaces/IUser";
 import { parseJwt } from "utils";
 
-const testUser = {
+/**
+ * Dummy user 
+ */
+export const testUser = {
   id: 1,
   firstName: "Christopher",
   lastName: "Johnson",
