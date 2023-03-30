@@ -13,47 +13,59 @@ import {
   setClientToken,
 } from "api/auth.api";
 
-
 import {
   deleteToken,
   deleteUser,
   persistToken,
   readToken,
-} from "services/localStorage.service";
+} from "api/services/localStorage.service";
 import { setUser } from "./user.slice";
 
 export interface AuthSlice {
   token: string | null;
 }
- const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.cThIIoDvwdueQB468K5xDc5633seEFoqwxjF_xSJyQQ"
-       
+const token =
+  // eslint-disable-next-line max-len
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.cThIIoDvwdueQB468K5xDc5633seEFoqwxjF_xSJyQQ";
+
 const initialState: AuthSlice = {
   token: readToken(),
 };
 
 export const doLogin = createAsyncThunk(
   "auth/doLogin",
-    async (loginPayload: LoginRequest, { dispatch }) => new Promise((res: any) => { 
-        /**Adding Hardcoded for login architecture. This needs to be remove once the login API is ready*/
-        dispatch(setUser({ id: 1,  firstName: "John",  lastName: "Doe", imgUrl: "test.png", userName: "@johnuma",  }));
-        persistToken(token, token);
-        res( token)
+  async (loginPayload: LoginRequest, { dispatch }) =>
+    // TODO : Need to Create interface for this
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    new Promise((res: any) => {
+      /**Adding Hardcoded for login architecture. 
+       * This needs to be remove once the login API is ready*/
+      dispatch(
+        setUser({
+          id: 1,
+          firstName: "John",
+          lastName: "Doe",
+          imgUrl: "test.png",
+          userName: "@johnuma",
+        })
+      );
+      persistToken(token, token);
+      res(token);
     })
-    // login(loginPayload).then((res) => {
-    // //  dispatch(setUser(res.user));
-    // //persistToken(token, token);
-    // })
+  // login(loginPayload).then((res) => {
+  // //  dispatch(setUser(res.user));
+  // //persistToken(token, token);
+  // })
 );
-
 
 export const doSetClient = createAsyncThunk(
   "auth/doSetClient",
-  async (clientPayload: RefreshClient, { dispatch }) =>
+  async (clientPayload: RefreshClient) =>
     setClientToken(clientPayload).then((res) => {
-    //  dispatch(setUser(res.user));
-    
+      //  dispatch(setUser(res.user));
+
       persistToken(res.token, res.refresh_token);
-     
+
       return res.token;
     })
 );
@@ -82,11 +94,10 @@ export const doSetNewPassword = createAsyncThunk(
 
 export const doLogout = createAsyncThunk(
   "auth/doLogout",
-  (payload, { dispatch }) => {
+  () => {
     deleteToken();
     deleteUser();
-   // dispatch(setUser(null));
-    
+    // dispatch(setUser(null));
   }
 );
 
@@ -95,7 +106,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(doLogin.fulfilled, (state, action) => {
+    builder.addCase(doLogin.fulfilled, (state) => {
       state.token = token;
     });
     builder.addCase(doLogout.fulfilled, (state) => {

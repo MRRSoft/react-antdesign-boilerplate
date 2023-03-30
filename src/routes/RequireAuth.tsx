@@ -7,6 +7,7 @@ interface Props {
 }
 
 const RequireAuth: React.FC<Props> = ({ children }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const token = useAppSelector((state: any) => state.auth.token);
 
   return token ? <>{children}</> : <Navigate to="/auth/login" replace />;

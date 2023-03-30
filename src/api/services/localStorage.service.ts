@@ -36,7 +36,7 @@ export const testUser = {
 export const persistToken = (token: string, refresh_token:string): void => {
   localStorage.setItem("accessToken", token);
   localStorage.setItem("refresh_token", refresh_token);
-  localStorage.setItem("account_info",JSON.stringify(parseJwt(token)))
+  localStorage.setItem("account_info",JSON.stringify(parseJwt(token)));
   
 };
 
@@ -47,8 +47,7 @@ export const readToken = (): string => {
 };
 
 export const persistUser = (user: IUser): void => {
-  //localStorage.setItem("user", JSON.stringify(user));
-  localStorage.setItem("user", "");
+  localStorage.setItem("user", JSON.stringify(user));
 };
 
 export const readUser = (): IUser | null => {
@@ -62,29 +61,30 @@ export const deleteToken = (): void => {
   localStorage.removeItem("refresh_token");
   localStorage.removeItem("account_info");
 
-}
+};
  
 export const getAccountInfo = (): { ClientID: string, AccountID: string } => { 
-  const accountInfo = localStorage.getItem("account_info")
-
-  return accountInfo ? JSON.parse(accountInfo) as any : null
-}
+  const accountInfo = localStorage.getItem("account_info");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return accountInfo ? JSON.parse(accountInfo) as any : null;
+};
 
 export const getClient = (): string | null => { 
-  const accountInfo = localStorage.getItem("account_info")
+  const accountInfo = localStorage.getItem("account_info");
   if (accountInfo) { 
-    let parsedAccountDetails = JSON.parse(accountInfo)
-    return parsedAccountDetails.ClientID ? parsedAccountDetails.ClientID : null
+    const parsedAccountDetails = JSON.parse(accountInfo);
+    return parsedAccountDetails.ClientID ? parsedAccountDetails.ClientID : null;
   }
-  return  null
-}
+  return  null;
+};
 
 export const isAccount = ():boolean => { 
   const accountInfo = localStorage.getItem("account_info");
- const parsedAccountInfo=  accountInfo ? JSON.parse(accountInfo) as any : null
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const parsedAccountInfo=  accountInfo ? JSON.parse(accountInfo) as any : null;
 
-  return parsedAccountInfo ? parsedAccountInfo.AccountID ?true:false : false
-}
+  return parsedAccountInfo ? parsedAccountInfo.AccountID ?true:false : false;
+};
 
 
 

@@ -6,6 +6,6 @@ interface LoadingProps {
   color?: string;
 }
 
-export const Loading: React.FC<LoadingProps> = ({ size, color }) => {
+export const Loading: React.FC<LoadingProps> = () => {
   return <LoadingOutlined style={{ fontSize: "60px" }} />;
 };
