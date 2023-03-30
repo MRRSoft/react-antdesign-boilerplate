@@ -8,7 +8,11 @@ import {
   StopFilled,
 } from "@ant-design/icons";
 
-type NotificationProps = any;
+
+type NotificationProps = {
+  message : string,
+  description? : string,
+};
 
 const openSuccessNotification = (config: NotificationProps): void => {
   notification.success({
@@ -19,7 +23,7 @@ const openSuccessNotification = (config: NotificationProps): void => {
       </div>
     ),
     message: (
-      <div className={`title ${!config.description && `title-only`}`}>
+      <div className={`title ${!config.description && "title-only"}`}>
         {config.message}
       </div>
     ),
@@ -41,7 +45,7 @@ const openInfoNotification = (config: NotificationProps): void => {
       </div>
     ),
     message: (
-      <div className={`title ${!config.description && `title-only`}`}>
+      <div className={`title ${!config.description && "title-only"}`}>
         {config.message}
       </div>
     ),
@@ -63,7 +67,7 @@ const openWarningNotification = (config: NotificationProps): void => {
       </div>
     ),
     message: (
-      <div className={`title ${!config.description && `title-only`}`}>
+      <div className={`title ${!config.description && "title-only"}`}>
         {config.message}
       </div>
     ),
@@ -85,7 +89,7 @@ const openErrorNotification = (config: NotificationProps): void => {
       </div>
     ),
     message: (
-      <div className={`title ${!config.description && `title-only`}`}>
+      <div className={`title ${!config.description && "title-only"}`}>
         {config.message}
       </div>
     ),

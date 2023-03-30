@@ -43,11 +43,11 @@ export const capitalize = (word: string): string =>
 
 export const trimStr = (str: string, charCount = 15) => {
   if (!str) return "";
-  var res = str.substring(0, charCount);
+  const res = str.substring(0, charCount);
   return res + "...";
 };
 
-export const isMorePages = (dataLength: any, perPageRecord = 10): any => {
+export const isMorePages = (dataLength: number, perPageRecord = 10) => {
   dataLength = dataLength ? dataLength : 0;
   return dataLength > perPageRecord ? true : false;
 };

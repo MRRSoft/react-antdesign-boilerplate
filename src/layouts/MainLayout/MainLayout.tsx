@@ -26,13 +26,14 @@ const items2: MenuProps["items"] = [
     icon: React.createElement(icon),
     label: `subnav ${key}`,
 
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-      return {
-        key: subKey,
-        label: `option${subKey}`,
-      };
-    }),
+    children: new Array(4).fill(null)
+      .map((_, j) => {
+        const subKey = index * 4 + j + 1;
+        return {
+          key: subKey,
+          label: `option${subKey}`,
+        };
+      }),
   };
 });
 

@@ -20,7 +20,7 @@ export const Login: React.FC = () => {
     setLoading(true);
     dispatch(doLogin(values))
       .unwrap()
-      .then((data) => {
+      .then(() => {
         navigate("/");
       })
       .catch((err) => {
