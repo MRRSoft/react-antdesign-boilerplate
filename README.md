@@ -124,7 +124,7 @@ For example, to create a feature branch for a new login page, use the following 
 Please follow the commit message standardization message also we have given commit message best practices belo, please follow same :
 Example:
 
-    feat: AFT-1309 : Added new feature to product detail page
+    AFT-1309: Added new feature to product detail page
    
  - `build`: changes related to the build system or external dependencies
 - `chore`: maintenance tasks or general housekeeping
