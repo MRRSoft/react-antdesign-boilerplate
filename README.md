@@ -105,7 +105,8 @@ export const themeSetting = {
 1. [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 2. [Bundle Size](https://marketplace.visualstudio.com/items?itemName=ambar.bundle-size)
 3. [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-4. [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+4.  [Eslint Tool](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+5. [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 
 ## Branching nomenclature for feature and bug fixes
 
@@ -121,7 +122,7 @@ For example, to create a feature branch for a new login page, use the following 
     git checkout -b feature/login-page
     
 ## Commit Message Standardization
-Please follow the commit message standardization message also we have given commit message best practices belo, please follow same :
+Please follow the commit message standardization message also we have given commit message best practices below, please follow same :
 Example:
 
     AFT-1309: Added new feature to product detail page
