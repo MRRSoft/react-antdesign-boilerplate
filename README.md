@@ -19,7 +19,7 @@ This project is a Znode Webstore application built using Next.js for SSR, React 
     ```
 4. Start the development server with npm start.
     ```
-    npm run dev
+    npm run start
     ```
 Default Application will run on ```http://localhost:3000```
 
