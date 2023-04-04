@@ -127,16 +127,7 @@ Example:
 
     AFT-1309: Added new feature to product detail page
    
- - `build`: changes related to the build system or external dependencies
-- `chore`: maintenance tasks or general housekeeping
-- `ci`: changes related to the continuous integration or delivery pipeline
-- `docs`: changes related to documentation
-- `feat`: new features or functionality added
-- `fix`: bug fixes or issue resolutions
-- `perf`: changes that improve performance
-- `refactor`: changes to the code structure or organization without changing functionality
-- `revert`: changes that revert previous changes
-- `style`: changes related to styling or formatting
+
 
 This commit adds a new feature to the product detail and the task of that feature is AFT-1309.
 
